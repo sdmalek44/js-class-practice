@@ -1,0 +1,13 @@
+{
+  "name": "tv-shows",
+  "description": "Practice programs for mastering the basics of JavaScript",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Stephen Malek",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^9.2.2"
+  }
+}
