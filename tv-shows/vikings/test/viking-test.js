@@ -1,5 +1,5 @@
 const assert = require('chai').assert;
-const Viking = require('../exercises/viking');
+const Viking = require('../src/viking');
 
 describe('Viking', function() {
   it.skip('should be a function', function() {
