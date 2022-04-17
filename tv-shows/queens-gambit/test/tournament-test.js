@@ -47,7 +47,7 @@ describe('Tournament', function() {
     assert.equal(greetings, "Welcome Beth Harmon. Welcome IM R. Uljanov. Welcome Vasily Borgov.");
   });
 
-  it.skip('should be able to return all players above the age of 21', function() {
+  it.skip('should be able to get the names of all players above the age of 21', function() {
     const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 50.0, country: 'Russia' });
     const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 6, funds: 25.0, country: 'USA' });
     const player3 = new ChessPlayer({ name: 'Vasily Borgov', age: 45, wins: 56, funds: 135.0, country: 'Russia' });
@@ -64,7 +64,7 @@ describe('Tournament', function() {
     assert.deepEqual(malePlayers, ['IM R. Uljanov', 'Vasily Borgov']);
   });
 
-  it.skip('should be able to return all players who are from Russia', function() {
+  it.skip('should be able to get the names of all players who are from Russia', function() {
     const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 50.0, country: 'Russia' });
     const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 6, funds: 25.0, country: 'USA' });
     const player3 = new ChessPlayer({ name: 'Georgi Girev', age: 13, wins: 13, funds: 45.0, country: 'Russia' });
@@ -183,7 +183,7 @@ describe('Tournament', function() {
     assert.equal(player2.wins, 10);
     assert.equal(player3.wins, 55);
 
-    var result = tournament.declareWinner('Beth Harmon');
+    tournament.declareWinner('Beth Harmon');
 
     assert.equal(player1.wins, 35);
     assert.equal(player2.wins, 11);
@@ -206,7 +206,7 @@ describe('Tournament', function() {
     assert.equal(player2.wins, 10);
     assert.equal(player3.wins, 55);
 
-    var result = tournament.declareWinner('Vasily Borgov');
+    tournament.declareWinner('Vasily Borgov');
 
     assert.equal(player1.wins, 35);
     assert.equal(player2.wins, 10);
