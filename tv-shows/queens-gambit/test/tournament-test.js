@@ -48,9 +48,9 @@ describe('Tournament', function() {
   });
 
   it.skip('should be able to return all players above the age of 21', function() {
-    const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 50.0, country: 'Russia'  });
-    const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 6, funds: 25.0, country: 'USA'  });
-    const player3 = new ChessPlayer({ name: 'Vasily Borgov', age: 45, wins: 56, funds: 135.0, country: 'Russia'  });
+    const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 50.0, country: 'Russia' });
+    const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 6, funds: 25.0, country: 'USA' });
+    const player3 = new ChessPlayer({ name: 'Vasily Borgov', age: 45, wins: 56, funds: 135.0, country: 'Russia' });
 
     const tournament = new Tournament({
       name: 'Ohio U.S. Championship',
@@ -65,9 +65,9 @@ describe('Tournament', function() {
   });
 
   it.skip('should be able to return all players who are from Russia', function() {
-    const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 50.0, country: 'Russia'  });
-    const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 6, funds: 25.0, country: 'USA'  });
-    const player3 = new ChessPlayer({ name: 'Georgi Girev', age: 13, wins: 13, funds: 45.0, country: 'Russia'  });
+    const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 50.0, country: 'Russia' });
+    const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 6, funds: 25.0, country: 'USA' });
+    const player3 = new ChessPlayer({ name: 'Georgi Girev', age: 13, wins: 13, funds: 45.0, country: 'Russia' });
 
     const tournament = new Tournament({
       name: 'Ohio U.S. Championship',
@@ -81,7 +81,7 @@ describe('Tournament', function() {
     assert.deepEqual(malePlayers, ['IM R. Uljanov', 'Georgi Girev']);
   });
 
-  it.skip('should be able to calculate the total wins of all players in tournament', function() {
+  it.skip('should be able to calculate the total past tournament wins of all players in tournament', function() {
     const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, country: 'Russia' });
     const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 10, country: 'USA' });
     const player3 = new ChessPlayer({ name: 'Vasily Borgov', age: 45, wins: 55, country: 'Russia' });
@@ -99,9 +99,9 @@ describe('Tournament', function() {
   });
 
   it.skip('should be able to charge entry fee to players', function() {
-    const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 75.0, country: 'Russia'  });
-    const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 10, funds: 50.0, country: 'USA'  });
-    const player3 = new ChessPlayer({ name: 'Vasily Borgov', age: 45, wins: 55, funds: 140.0, country: 'Russia'  });
+    const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 75.0, country: 'Russia' });
+    const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 10, funds: 50.0, country: 'USA' });
+    const player3 = new ChessPlayer({ name: 'Vasily Borgov', age: 45, wins: 55, funds: 140.0, country: 'Russia' });
 
     const tournament = new Tournament({
       name: 'Moscow Invitational',
@@ -118,9 +118,9 @@ describe('Tournament', function() {
   });
 
   it.skip('should be able to declare a tournament winner', function() {
-    const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 25.0, country: 'Russia'  });
-    const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 10, funds: 0.0, country: 'USA'  });
-    const player3 = new ChessPlayer({ name: 'Vasily Borgov', age: 45, wins: 55, funds: 90.0, country: 'Russia'  });
+    const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 25.0, country: 'Russia' });
+    const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 10, funds: 0.0, country: 'USA' });
+    const player3 = new ChessPlayer({ name: 'Vasily Borgov', age: 45, wins: 55, funds: 90.0, country: 'Russia' });
 
     const tournament = new Tournament({
       name: 'Moscow Invitational',
@@ -129,6 +129,10 @@ describe('Tournament', function() {
       players: [player1, player2, player3]
     });
 
+    assert.equal(player1.funds, 25.0);
+    assert.equal(player2.funds, 0.0);
+    assert.equal(player3.funds, 90.0);
+
     var result = tournament.declareWinner('Beth Harmon');
 
     assert.equal(player1.funds, 25.0);
@@ -136,5 +140,76 @@ describe('Tournament', function() {
     assert.equal(player3.funds, 90.0);
 
     assert.equal(result, 'And the winner is Beth Harmon from USA!');
+  });
+
+  it.skip('should be able to declare a different tournament winner', function() {
+    const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 25.0, country: 'Russia' });
+    const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 10, funds: 0.0, country: 'USA' });
+    const player3 = new ChessPlayer({ name: 'Vasily Borgov', age: 45, wins: 55, funds: 90.0, country: 'Russia' });
+
+    const tournament = new Tournament({
+      name: 'Moscow Invitational',
+      entryFee: 50.0,
+      prize: 500.0,
+      players: [player1, player2, player3]
+    });
+
+    assert.equal(player1.funds, 25.0);
+    assert.equal(player2.funds, 0.0);
+    assert.equal(player3.funds, 90.0);
+
+    var result = tournament.declareWinner('Vasily Borgov');
+
+    assert.equal(player1.funds, 25.0);
+    assert.equal(player2.funds, 0.0);
+    assert.equal(player3.funds, 590.0);
+
+    assert.equal(result, 'And the winner is Vasily Borgov from Russia!');
+  });
+
+  it.skip('should add a win to the tournament winners record', function() {
+    const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 25.0, country: 'Russia' });
+    const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 10, funds: 0.0, country: 'USA' });
+    const player3 = new ChessPlayer({ name: 'Vasily Borgov', age: 45, wins: 55, funds: 90.0, country: 'Russia' });
+
+    const tournament = new Tournament({
+      name: 'Moscow Invitational',
+      entryFee: 50.0,
+      prize: 500.0,
+      players: [player1, player2, player3]
+    });
+
+    assert.equal(player1.wins, 35);
+    assert.equal(player2.wins, 10);
+    assert.equal(player3.wins, 55);
+
+    var result = tournament.declareWinner('Beth Harmon');
+
+    assert.equal(player1.wins, 35);
+    assert.equal(player2.wins, 11);
+    assert.equal(player3.wins, 55);
+  });
+
+  it.skip('should add a win to the different tournament winners record', function() {
+    const player1 = new ChessPlayer({ name: 'IM R. Uljanov', age: 38, wins: 35, funds: 25.0, country: 'Russia' });
+    const player2 = new ChessPlayer({ name: 'Beth Harmon', age: 18, wins: 10, funds: 0.0, country: 'USA' });
+    const player3 = new ChessPlayer({ name: 'Vasily Borgov', age: 45, wins: 55, funds: 90.0, country: 'Russia' });
+
+    const tournament = new Tournament({
+      name: 'Moscow Invitational',
+      entryFee: 50.0,
+      prize: 500.0,
+      players: [player1, player2, player3]
+    });
+
+    assert.equal(player1.wins, 35);
+    assert.equal(player2.wins, 10);
+    assert.equal(player3.wins, 55);
+
+    var result = tournament.declareWinner('Vasily Borgov');
+
+    assert.equal(player1.wins, 35);
+    assert.equal(player2.wins, 10);
+    assert.equal(player3.wins, 56);
   });
 });
